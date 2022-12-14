@@ -2,6 +2,13 @@
   display: flex;
   align-itens: center;
   justify-content: center;
+  background: gray;
+}
+
+h1 {
+  color: purple;
+  font-weight: 700;
+  margin-right: 2rem;
 }
 
 .header {
@@ -14,7 +21,7 @@
   display: flex;
   align-items: center;
 
-  background: var(--blue-500);
+  background: purple;
 
   color: var(--white);
   font-weight: 1rem;
@@ -29,7 +36,7 @@
   transition: background-color 0.2s;
 }
 .addTaskButton:hover {
-  background: var(--blue-300);
+  background: gray;
 }
 
 .addTaskButton svg {

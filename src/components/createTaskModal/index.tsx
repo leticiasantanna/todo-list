@@ -54,7 +54,7 @@ function CreateTaskModal(props: IModalProps) {
         />
 
         <button type="submit" className={styles.button}>
-          Adicionar
+          Salvar
         </button>
       </form>
     </Modal>
