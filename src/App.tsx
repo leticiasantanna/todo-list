@@ -1,33 +1,51 @@
 import React, { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import { Plus } from "react-feather";
+import CreateTaskModal from "./components/createTaskModal";
+import Task from "./components/task";
+import { ITaskProps } from "./components/task/types";
+
+import styles from "./styles/pages/home.module.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [tasks, setTasks] = useState<ITaskProps[]>(() => {
+    const taskFromLocalStorage = localStorage.getItem("tasks");
+    if (!taskFromLocalStorage) {
+      return [];
+    }
+    return JSON.parse(taskFromLocalStorage);
+  });
+  const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] = useState(false);
+
+  function handleCloseTaskModal() {
+    setIsCreateTaskModalOpen(false);
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+    <div className={styles.app}>
+      <section className={styles.container}>
+        <header className={styles.header}>
+          <h1>Minhas Tarefas</h1>
+          <button type="button" className={styles.addTaskButton}>
+            Adicionar <Plus />
+          </button>
+        </header>
 
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <div className={styles.tasks}>
+          <Task
+            handleToggleTask={function (task: any): void {
+              throw new Error("Function not implemented.");
+            }}
+            handleRemoveTask={function (task: any): void {
+              throw new Error("Function not implemented.");
+            }}
+            task={undefined}
+          />
+        </div>
+      </section>
+      <CreateTaskModal
+        isOpen={isCreateTaskModalOpen}
+        onRequestClose={handleCloseTaskModal}
+      />
     </div>
   );
 }
