@@ -9,12 +9,14 @@ function Task(props: ITaskProps): ReactElement {
     <div className={styles.container}>
       <input
         type="checkbox"
+        readOnly
+        checked={props.task.isCompleted}
         className={styles.input}
         onClick={() => {
           props.handleToggleTask(props.task);
         }}
       />
-      <label className={props.task.isComplited ? styles.completed : ""}>
+      <label className={props.task.isCompleted ? styles.completed : ""}>
         {props.task.title}
       </label>
 

@@ -1,11 +1,11 @@
 export interface ITaskProps {
   task: ITask;
-  handleToggleTask: (task: any) => void;
-  handleRemoveTask: (task: any) => void;
+  handleToggleTask: (clickedTask: ITask) => void;
+  handleRemoveTask: (taskId: number) => void;
 }
 
 export interface ITask {
   id: number;
   title: string;
-  isComplited: boolean;
+  isCompleted: boolean;
 }
